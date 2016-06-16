@@ -1,9 +1,10 @@
-package com.mx.booboo.mvp;
+package com.mx.booboo.mvp.Bean;
 
 /**
  * Created by hww on 2016/6/16.
  */
-public class TabNewsInfo {
+public class TabNameInfo {
+
     private int id;
     private String name;
 

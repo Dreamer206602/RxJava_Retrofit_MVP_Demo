@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.mx.booboo.fragment.NewsMainFragment;
-import com.mx.booboo.mvp.TabNewsInfo;
+import com.mx.booboo.mvp.Bean.TabNewsInfo;
 
 import java.util.List;
 
