@@ -72,6 +72,7 @@ public class NewsMainFragment extends BaseFragment implements BaseView.NewsListV
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_LINEAR,
                 LinearLayoutManager.VERTICAL));
+        mRecyclerView.setAdapter(mListAdapter);
 
         mSwipeRefreshLayout.setOnRefreshListener(this);
 
@@ -99,7 +100,7 @@ public class NewsMainFragment extends BaseFragment implements BaseView.NewsListV
             mListAdapter.addData(datas);
 
         }
-        mRecyclerView.setAdapter(mListAdapter);
+
 
 
 
