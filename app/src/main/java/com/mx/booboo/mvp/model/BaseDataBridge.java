@@ -1,5 +1,6 @@
 package com.mx.booboo.mvp.model;
 
+import com.mx.booboo.mvp.Bean.NewsListInfo;
 import com.mx.booboo.mvp.Bean.TabNameInfo;
 import com.mx.booboo.mvp.Bean.TabNewsInfo;
 
@@ -18,5 +19,8 @@ public interface BaseDataBridge<T> {
     }
 
     interface TabNameData extends BaseDataBridge<TabNameInfo> {
+    }
+
+    interface NewsListData extends BaseDataBridge<NewsListInfo> {
     }
 }

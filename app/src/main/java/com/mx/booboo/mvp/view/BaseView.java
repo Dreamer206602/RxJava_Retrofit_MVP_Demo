@@ -1,5 +1,6 @@
 package com.mx.booboo.mvp.view;
 
+import com.mx.booboo.mvp.Bean.NewsListInfo;
 import com.mx.booboo.mvp.Bean.TabNameInfo;
 import com.mx.booboo.mvp.Bean.TabNewsInfo;
 
@@ -27,4 +28,6 @@ public interface BaseView<T> {
 
     interface TabNewsView extends BaseView<TabNewsInfo> {
     }
+
+    interface  NewsListView extends BaseView<NewsListInfo>{}
 }

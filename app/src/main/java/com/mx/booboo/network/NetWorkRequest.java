@@ -19,6 +19,13 @@ public class NetWorkRequest {
                 .subscribe(subscriber);
     }
 
+    public static void newsList(int id,int page,Subscriber<BaseBean.NewsListBean>subscriber){
+        Network.getTngouApi().getNewsList(id,page)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
 
 
 

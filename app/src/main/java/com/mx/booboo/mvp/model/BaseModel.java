@@ -12,4 +12,8 @@ public interface BaseModel<T> {
 
     interface TabNameModel extends BaseModel<BaseDataBridge.TabNameData> {
     }
+
+    interface NewsListModel{
+        void netWorkNewList(int id,int page,BaseDataBridge.NewsListData newsListData);
+    }
 }

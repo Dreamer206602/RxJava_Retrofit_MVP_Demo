@@ -8,4 +8,20 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+    <string name="navigation_news">新闻列表</string>
+    <string name="news">新闻</string>
+    <string name="news_time">时间:</string>
+    <string name="test">测试</string>
+    <string name="toolbar_test">测试</string>
+    <string name="navigation_joke">笑话</string>
+    <string name="toolbar_joke">笑话</string>
+    <string name="joke_text">文字笑话</string>
+    <string name="joke_pic">图片笑话</string>
+    <string name="exit_app">再按一次</string>
+    <string name="toolbar_item_share">分享</string>
+    <string name="image_detail">图片详情</string>
+    <string name="share">分享到平台</string>
 </resources>

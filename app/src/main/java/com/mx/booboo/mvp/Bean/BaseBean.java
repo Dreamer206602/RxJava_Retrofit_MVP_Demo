@@ -23,4 +23,7 @@ public class BaseBean<T> {
     public class TabNameBean extends BaseBean<TabNameInfo> {
     }
 
+    public class NewsListBean extends BaseBean<NewsListInfo>{}
+
+
 }
