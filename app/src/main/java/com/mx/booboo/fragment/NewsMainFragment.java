@@ -4,7 +4,9 @@ package com.mx.booboo.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.BaseAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.mx.booboo.R;
 import com.mx.booboo.adapter.NewsListAdapter;
+import com.mx.booboo.constant.Constant;
 import com.mx.booboo.mvp.Bean.NewsListInfo;
 import com.mx.booboo.mvp.presenter.BasePresenter;
 import com.mx.booboo.mvp.presenter.NewsListPresenterImpl;
@@ -66,6 +69,9 @@ public class NewsMainFragment extends BaseFragment implements BaseView.NewsListV
 
 
 
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_LINEAR,
+                LinearLayoutManager.VERTICAL));
 
         mSwipeRefreshLayout.setOnRefreshListener(this);
 
