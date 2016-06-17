@@ -1,6 +1,7 @@
 package com.mx.booboo.fragment;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -24,9 +25,14 @@ import com.mx.booboo.widget.MyRecyclerView;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,6 +78,10 @@ public class JokeTextFragment extends BaseFragment implements MyRecyclerView.Loa
         mJokeTextPresenter = new JokeTextPresenterImpl(this);
         List<JokeTextBean.JokeTextInfo> jokeTextInfo = new LinkedList<>();
 
+        mSwipeRefreshLayout.setColorSchemeColors(
+              UIUtils.getColor(R.color.colorAccent),
+                UIUtils.getColor(R.color.colorPrimary)
+        );
         mSwipeRefreshLayout.setOnRefreshListener(this);
 
         mJokeTextAdapter = new JokeTextAdapter(jokeTextInfo);
@@ -82,19 +92,24 @@ public class JokeTextFragment extends BaseFragment implements MyRecyclerView.Loa
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_LINEAR, LinearLayoutManager.VERTICAL));
         mRecyclerView.setAdapter(mJokeTextAdapter);
 
-        mSwipeRefreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                onRefresh();
-            }
-        });
+
+        Observable.timer(1000, TimeUnit.MILLISECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        onRefresh();
+                    }
+                });
         isLoad = true;
     }
 
     @Override
     public void onRefresh() {
         mJokeTextAdapter.removeAll();
-        page = 1;
+        //page = 1;
+        ++page;
         mJokeTextPresenter.requestNetWork(page, isNull);
     }
 
@@ -132,7 +147,7 @@ public class JokeTextFragment extends BaseFragment implements MyRecyclerView.Loa
 
     @Override
     public void showFoot() {
-        mJokeTextAdapter.isShowFooter(true);
+        mJokeTextAdapter.isShowFooter(false);
     }
 
     @Override
