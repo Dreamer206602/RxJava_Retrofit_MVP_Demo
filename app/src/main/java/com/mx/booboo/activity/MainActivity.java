@@ -16,6 +16,8 @@ import android.widget.FrameLayout;
 
 import com.mx.booboo.R;
 import com.mx.booboo.activity.BaseActivity;
+import com.mx.booboo.fragment.JokeMainPagerFragment;
+import com.mx.booboo.fragment.NewsMainFragment;
 import com.mx.booboo.fragment.NewsViewPagerFragment;
 
 import butterknife.Bind;
@@ -106,12 +108,14 @@ public class MainActivity extends BaseActivity
         if (id == R.id.nav_camera) {
            getSupportFragmentManager().beginTransaction().replace(R.id.container,new NewsViewPagerFragment()).commit();
 
-
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_joke) {
+            //笑话
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,new JokeMainPagerFragment()).commit();
+
 
         } else if (id == R.id.nav_share) {
 

@@ -5,19 +5,19 @@
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
-            android:title="图片分类"/>
+            android:title="新闻列表"/>
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery"/>
+            android:title="图片分类"/>
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow"/>
+            android:title="最新图片"/>
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_joke"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools"/>
+            android:title="笑话"/>
     </group>
 
     <item android:title="Communicate">
