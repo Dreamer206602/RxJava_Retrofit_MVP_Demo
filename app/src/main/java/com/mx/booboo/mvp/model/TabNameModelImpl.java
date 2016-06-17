@@ -10,7 +10,7 @@ import com.mx.booboo.network.NetWorkRequest;
 public class TabNameModelImpl implements BaseModel.TabNameModel {
     @Override
     public void netWork(final BaseDataBridge.TabNameData model) {
-        NetWorkRequest.tabName(new MySubscriber<BaseBean.TabNameBean>(){
+        NetWorkRequest.tabNews(new MySubscriber<BaseBean.TabNameBean>(){
 
             @Override
             public void onError(Throwable e) {

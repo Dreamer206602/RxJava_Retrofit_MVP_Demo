@@ -39,13 +39,13 @@ public class NewsListPresenterImpl extends BasePresenterImpl<BaseView.NewsListVi
 
     @Override
     public void requestNetWork(int id, int page, boolean isNull) {
-        if(page==1){
-            view.showProgress();
-        }else{
-            if(!isNull){
-                view.showFoot();
-            }
-        }
+//        if(page==1){
+//            view.showProgress();
+//        }else{
+//            if(!isNull){
+//                view.showFoot();
+//            }
+//        }
         mNewsListModel.netWorkNewList(id,page,this);
 
     }

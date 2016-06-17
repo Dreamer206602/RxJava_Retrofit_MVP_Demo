@@ -5,6 +5,7 @@ package com.mx.booboo.network;
  */
 public class Api {
 
+    //   http://www.tngou.net/api/top/list/id=1&&page=1
 
     //天狗api
     public static final String BASE_API_TNGOU = "http://www.tngou.net/";

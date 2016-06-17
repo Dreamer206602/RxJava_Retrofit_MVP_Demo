@@ -4,6 +4,7 @@ package com.mx.booboo.fragment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 
 import com.mx.booboo.R;
@@ -12,6 +13,7 @@ import com.mx.booboo.mvp.Bean.TabNewsInfo;
 import com.mx.booboo.mvp.presenter.BasePresenter;
 import com.mx.booboo.mvp.presenter.TabNewsPresenterImpl;
 import com.mx.booboo.mvp.view.BaseView;
+import com.mx.booboo.utils.LogUtils;
 import com.mx.booboo.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -53,6 +55,8 @@ public class NewsViewPagerFragment extends BaseFragment implements BaseView.TabN
 
     @Override
     public void setData(List<TabNewsInfo> datas) {
+
+        LogUtils.i("NewsViewPagerFragment",datas.get(0).getName());
 
         if(!datas.isEmpty()){
             data.addAll(datas);

@@ -11,7 +11,8 @@ import java.util.List;
 /**
  * Created by hww on 2016/6/16.
  */
-public class TabNewsPresenterImpl extends BasePresenterImpl<BaseView.TabNewsView> implements BasePresenter.TabNewsPresenter,BaseDataBridge.TabNewsData{
+public class TabNewsPresenterImpl extends BasePresenterImpl<BaseView.TabNewsView>
+        implements BasePresenter.TabNewsPresenter,BaseDataBridge.TabNewsData{
     private BaseModel.TabNewsModel mTabNewsModel;
 
 
