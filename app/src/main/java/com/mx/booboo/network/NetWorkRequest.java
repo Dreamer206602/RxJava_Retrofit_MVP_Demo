@@ -11,6 +11,12 @@ import rx.schedulers.Schedulers;
  */
 public class NetWorkRequest {
 
+    public static void tabName(Subscriber<BaseBean.TabNameBean> subscriber) {
+        Network.getTngouApi().getTabName()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
 
     public static void tabNews(Subscriber<BaseBean.TabNewsBean> subscriber) {
         Network.getTngouApi().getTabNews()

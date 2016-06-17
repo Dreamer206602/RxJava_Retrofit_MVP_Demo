@@ -7,6 +7,8 @@ public class Api {
 
     //   http://www.tngou.net/api/top/list/id=1&&page=1
 
+    //  http://www.tngou.net/api/top/classify
+
     //天狗api
     public static final String BASE_API_TNGOU = "http://www.tngou.net/";
 

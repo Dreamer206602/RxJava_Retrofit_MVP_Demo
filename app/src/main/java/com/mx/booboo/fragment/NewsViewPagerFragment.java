@@ -17,6 +17,7 @@ import com.mx.booboo.utils.LogUtils;
 import com.mx.booboo.utils.UIUtils;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -47,7 +48,7 @@ public class NewsViewPagerFragment extends BaseFragment implements BaseView.TabN
         BasePresenter.TabNewsPresenter presenter=new TabNewsPresenterImpl(this);
         presenter.requestNetWork();
 
-        data =new ArrayList<>();
+        data =new LinkedList<>();
         mTabNewsAdapter=new TabNewsAdapter(getChildFragmentManager(), data);
 
     }
