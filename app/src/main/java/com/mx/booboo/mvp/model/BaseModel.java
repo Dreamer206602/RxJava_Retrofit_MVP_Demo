@@ -16,4 +16,12 @@ public interface BaseModel<T> {
     interface NewsListModel{
         void netWorkNewList(int id,int page,BaseDataBridge.NewsListData newsListData);
     }
+
+
+
+
+    //////////////////////////////////////////////////
+    interface  JokeTextModel{
+        void netWorkList(int page,BaseDataBridge.JokeTextList jokeTextList);
+    }
 }

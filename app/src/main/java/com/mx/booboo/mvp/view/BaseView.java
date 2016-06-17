@@ -1,5 +1,6 @@
 package com.mx.booboo.mvp.view;
 
+import com.mx.booboo.mvp.Bean.JokeTextBean;
 import com.mx.booboo.mvp.Bean.NewsListInfo;
 import com.mx.booboo.mvp.Bean.TabNameInfo;
 import com.mx.booboo.mvp.Bean.TabNewsInfo;
@@ -30,4 +31,6 @@ public interface BaseView<T> {
     }
 
     interface  NewsListView extends BaseView<NewsListInfo>{}
+
+    interface  JokeTextView extends BaseView<JokeTextBean.JokeTextInfo>{}
 }

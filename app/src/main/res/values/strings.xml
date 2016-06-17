@@ -23,4 +23,5 @@
     <string name="toolbar_item_share">分享</string>
     <string name="image_detail">图片详情</string>
     <string name="share">分享到平台</string>
+    <string name="network_error">网络错误</string>
 </resources>

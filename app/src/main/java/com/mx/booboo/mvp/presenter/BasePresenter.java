@@ -1,5 +1,6 @@
 package com.mx.booboo.mvp.presenter;
 
+import com.mx.booboo.mvp.Bean.JokeTextBean;
 import com.mx.booboo.mvp.Bean.NewsListInfo;
 
 /**
@@ -18,6 +19,14 @@ public interface BasePresenter {
     interface  NewsListPresenter{
         void requestNetWork(int id,int page,boolean isNull);
         void onClick(NewsListInfo info);
+    }
+
+
+
+
+    ////////////////////////////////////////////////////
+    interface  JokeTextPresenter{
+        void requestNetWork(int page,boolean isNull);
     }
 
 
