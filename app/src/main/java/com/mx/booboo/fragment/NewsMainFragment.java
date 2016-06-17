@@ -14,6 +14,7 @@ import android.widget.BaseAdapter;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.mx.booboo.R;
+import com.mx.booboo.adapter.BaseRecyclerViewAdapter;
 import com.mx.booboo.adapter.NewsListAdapter;
 import com.mx.booboo.constant.Constant;
 import com.mx.booboo.mvp.Bean.NewsListInfo;
@@ -22,29 +23,30 @@ import com.mx.booboo.mvp.presenter.NewsListPresenterImpl;
 import com.mx.booboo.mvp.view.BaseView;
 import com.mx.booboo.utils.LogUtils;
 import com.mx.booboo.utils.UIUtils;
+import com.mx.booboo.widget.MyRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class NewsMainFragment extends BaseFragment implements BaseView.NewsListView,
-        SwipeRefreshLayout.OnRefreshListener,BaseQuickAdapter.RequestLoadMoreListener {
+        SwipeRefreshLayout.OnRefreshListener, BaseRecyclerViewAdapter.OnItemClickListener<NewsListInfo>,MyRecyclerView.LoadingData {
 
 
     @Bind(R.id.recyclerView)
-    RecyclerView mRecyclerView;
+    MyRecyclerView mRecyclerView;
     @Bind(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
+
+    private boolean isPrepared;
+    private boolean isLoad;
+
+    private View inflate;
 
     private NewsListAdapter mListAdapter;
     private List<NewsListInfo>mListInfos;
@@ -56,27 +58,43 @@ public class NewsMainFragment extends BaseFragment implements BaseView.NewsListV
 
     @Override
     protected View initView() {
-        return View.inflate(UIUtils.getActivity(), R.layout.fragment_news_main, null);
+        if (inflate == null) {
+            inflate = View.inflate(UIUtils.getActivity(), R.layout.fragment_news_main, null);
+            isPrepared = true;
+        }
+        return inflate;
     }
 
     @Override
     protected void initData() {
+
+        if (!isPrepared || !isVisible || isLoad) {
+            return;
+        }
         mNewsListPresenter=new NewsListPresenterImpl(this);
 
+        mListInfos=new ArrayList<>();
+        mListAdapter=new NewsListAdapter(mListInfos);
 
-//        mListInfos=new ArrayList<>();
-//        mListAdapter=new NewsListAdapter(UIUtils.getActivity(),R.layout.news_list_item,mListInfos);
-//
-//        mRecyclerView.setHasFixedSize(true);
-//        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_LINEAR,
-//                LinearLayoutManager.VERTICAL));
-//        mRecyclerView.setAdapter(mListAdapter);
-
+        mListAdapter.setOnItemClickListener(this);
         mSwipeRefreshLayout.setOnRefreshListener(this);
 
 
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLoadingData(this);
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_LINEAR,
+                LinearLayoutManager.VERTICAL));
+        mRecyclerView.setAdapter(mListAdapter);
 
 
+        mSwipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                onRefresh();
+            }
+        });
+
+        isLoad = true;
 
     }
 
@@ -92,20 +110,12 @@ public class NewsMainFragment extends BaseFragment implements BaseView.NewsListV
 
     @Override
     public void setData(List<NewsListInfo> datas) {
-        mListInfos.addAll(datas);
         LogUtils.i("NewsMainFragment",datas.get(0).getDescription());
-
-//        if(datas.isEmpty()){
-//            isNull=true;
-//        }else{
-//            mListInfos.addAll(datas);
-//            //mListAdapter.addData(datas);
-//
-//        }
-
-
-
-
+        if(datas.isEmpty()){
+            isNull=true;
+        }else{
+            mListInfos.addAll(datas);
+        }
     }
 
     @Override
@@ -139,28 +149,23 @@ public class NewsMainFragment extends BaseFragment implements BaseView.NewsListV
 
     @Override
     public void onRefresh() {
-
-//        Observable.timer(100, TimeUnit.MILLISECONDS)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Action1<Long>() {
-//                    @Override
-//                    public void call(Long aLong) {
-//                            mSwipeRefreshLayout.setRefreshing(false);
-//                    }
-//                });
         page=1;
+        mListAdapter.removeAll();
         mNewsListPresenter.requestNetWork(index+1,page,isNull);
-        //mListAdapter.notifyDataSetChanged();
+    }
 
-
+    @Override
+    public void onItemClick(View view, int position, NewsListInfo info) {
 
     }
 
     @Override
-    public void onLoadMoreRequested() {
+    public void onLoadMore() {
 
-
+        if (!mSwipeRefreshLayout.isRefreshing()) {
+            ++page;
+            mNewsListPresenter.requestNetWork(index + 1, page, isNull);
+        }
 
     }
 }

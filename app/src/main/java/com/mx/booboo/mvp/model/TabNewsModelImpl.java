@@ -3,6 +3,7 @@ package com.mx.booboo.mvp.model;
 import com.mx.booboo.mvp.Bean.BaseBean;
 import com.mx.booboo.network.MySubscriber;
 import com.mx.booboo.network.NetWorkRequest;
+import com.mx.booboo.utils.LogUtils;
 
 /**
  * Created by hww on 2016/6/16.
@@ -18,6 +19,7 @@ public class TabNewsModelImpl implements BaseModel.TabNewsModel {
 
             @Override
             public void onNext(BaseBean.TabNewsBean tabNewsBean) {
+                LogUtils.d("TabNewsModelImpl",tabNewsBean.getInfo().get(0).toString());
                model.addData(tabNewsBean.getInfo());
 
             }

@@ -9,10 +9,13 @@ import android.view.View;
 
 import com.mx.booboo.R;
 import com.mx.booboo.adapter.TabNewsAdapter;
+import com.mx.booboo.mvp.Bean.BaseBean;
 import com.mx.booboo.mvp.Bean.TabNewsInfo;
 import com.mx.booboo.mvp.presenter.BasePresenter;
 import com.mx.booboo.mvp.presenter.TabNewsPresenterImpl;
 import com.mx.booboo.mvp.view.BaseView;
+import com.mx.booboo.network.MySubscriber;
+import com.mx.booboo.network.NetWorkRequest;
 import com.mx.booboo.utils.LogUtils;
 import com.mx.booboo.utils.UIUtils;
 
@@ -45,6 +48,7 @@ public class NewsViewPagerFragment extends BaseFragment implements BaseView.TabN
     @Override
     protected void initData() {
 
+
         BasePresenter.TabNewsPresenter presenter=new TabNewsPresenterImpl(this);
         presenter.requestNetWork();
 
@@ -61,6 +65,7 @@ public class NewsViewPagerFragment extends BaseFragment implements BaseView.TabN
 
         if(!datas.isEmpty()){
             data.addAll(datas);
+            mTabNewsAdapter.notifyDataSetChanged();
             mViewPager.setAdapter(mTabNewsAdapter);
             mTabLayout.setupWithViewPager(mViewPager);
         }
