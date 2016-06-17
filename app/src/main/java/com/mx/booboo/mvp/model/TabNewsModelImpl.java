@@ -19,7 +19,6 @@ public class TabNewsModelImpl implements BaseModel.TabNewsModel {
 
             @Override
             public void onNext(BaseBean.TabNewsBean tabNewsBean) {
-                LogUtils.d("TabNewsModelImpl",tabNewsBean.getInfo().get(0).toString());
                model.addData(tabNewsBean.getInfo());
 
             }

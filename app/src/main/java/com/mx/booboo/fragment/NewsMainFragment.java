@@ -68,9 +68,9 @@ public class NewsMainFragment extends BaseFragment implements BaseView.NewsListV
     @Override
     protected void initData() {
 
-        if (!isPrepared || !isVisible || isLoad) {
-            return;
-        }
+//        if (!isPrepared || !isVisible || isLoad) {
+//            return;
+//        }
         mNewsListPresenter=new NewsListPresenterImpl(this);
 
         mListInfos=new ArrayList<>();
@@ -114,7 +114,7 @@ public class NewsMainFragment extends BaseFragment implements BaseView.NewsListV
         if(datas.isEmpty()){
             isNull=true;
         }else{
-            mListInfos.addAll(datas);
+            mListAdapter.addAll(datas);
         }
     }
 
