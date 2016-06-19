@@ -24,4 +24,7 @@ public interface BaseModel<T> {
     interface  JokeTextModel{
         void netWorkList(int page,BaseDataBridge.JokeTextList jokeTextList);
     }
+    interface  JokePicModel{
+        void netWorkList(int page,BaseDataBridge.JokePicList jokePicList);
+    }
 }

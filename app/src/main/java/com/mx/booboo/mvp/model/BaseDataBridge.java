@@ -1,5 +1,6 @@
 package com.mx.booboo.mvp.model;
 
+import com.mx.booboo.mvp.Bean.JokePicBean;
 import com.mx.booboo.mvp.Bean.JokeTextBean;
 import com.mx.booboo.mvp.Bean.NewsListInfo;
 import com.mx.booboo.mvp.Bean.TabNameInfo;
@@ -29,6 +30,10 @@ public interface BaseDataBridge<T> {
 
     ////////////////////////////////////////////////////////
     interface JokeTextList extends BaseDataBridge<JokeTextBean.JokeTextInfo>{
+
+    }
+
+    interface JokePicList extends BaseDataBridge<JokePicBean.JokePicInfo>{
 
     }
 }

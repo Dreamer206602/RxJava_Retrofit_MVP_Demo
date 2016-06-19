@@ -1,6 +1,7 @@
 package com.mx.booboo.network;
 
 import com.mx.booboo.mvp.Bean.BaseBean;
+import com.mx.booboo.mvp.Bean.JokePicBean;
 import com.mx.booboo.mvp.Bean.JokeTextBean;
 
 import rx.Subscriber;
@@ -41,6 +42,17 @@ public class NetWorkRequest {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
+    }
+
+    public static void jokePicList(int page, Subscriber<JokePicBean>subscriber){
+
+        Network.getBaiDuApi().getJokePic(page)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+
+
+
     }
 
 

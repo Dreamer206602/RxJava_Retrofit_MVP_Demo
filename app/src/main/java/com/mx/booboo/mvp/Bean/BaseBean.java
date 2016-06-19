@@ -26,4 +26,5 @@ public class BaseBean<T> {
     public class NewsListBean extends BaseBean<NewsListInfo>{}
 
 
+
 }
