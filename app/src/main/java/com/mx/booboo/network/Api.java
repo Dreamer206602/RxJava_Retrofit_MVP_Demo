@@ -50,4 +50,9 @@ public class Api {
 
     //笑话  图片
     public static final String JOKE_PIC = "showapi_open_bus/showapi_joke/joke_pic";
+
+    //Gank
+    public static final String GANK= "http://gank.io/api/search/query/listview/category/Android/count/10/page/";
+
+
 }
