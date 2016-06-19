@@ -26,7 +26,6 @@
     <string name="network_error">网络错误</string>
 
 
-
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>

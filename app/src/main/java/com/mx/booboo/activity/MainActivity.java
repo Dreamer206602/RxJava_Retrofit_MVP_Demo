@@ -17,6 +17,7 @@ import com.mx.booboo.R;
 import com.mx.booboo.fragment.JokeMainPagerFragment;
 import com.mx.booboo.fragment.LoginFragment;
 import com.mx.booboo.fragment.NewsViewPagerFragment;
+import com.mx.booboo.fragment.SearchFragment;
 
 import butterknife.Bind;
 
@@ -119,8 +120,9 @@ public class MainActivity extends BaseActivity
 
             getSupportFragmentManager().beginTransaction().replace(R.id.container,new LoginFragment()).commit();
 
+        }else if(id==R.id.nav_search){
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,new SearchFragment()).commit();
         }
-
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
